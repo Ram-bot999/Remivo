@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: remivo
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+    disk:
+      name: data
+      mountPath: /opt/render/project/data
+      sizeGB: 1
